@@ -29,15 +29,14 @@ public class EstoqueController {
 	 @RequestMapping(value = "/verificar-estoque", method = RequestMethod.GET, produces="application/json")	 
 	  public ResponseEntity<Boolean> verificarEstoque(Float  idProduto,Integer quantidade) throws Exception {		 
 		 System.out.println("Processando verificarEstoque");
-		 if(mapaEstoque.containsKey(idProduto)) {
-			 Integer quantidadeAtual = mapaEstoque.get(idProduto);
-			 boolean temEstoque = (quantidade - quantidadeAtual) <= 0; 
-			 return  new ResponseEntity<>(temEstoque,HttpStatus.OK);	 
+		 if(mapaEstoque.containsKey(idProduto)) { 
+			 return  new ResponseEntity<>(processaVerificarEstoque(idProduto,quantidade),HttpStatus.OK);	 
 		 }else {
 			 return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		 }
 		 
 	  }
+	 	 
 	 
 	 @ApiOperation(value = "Atualiza um produto no estoque",response=Produto.class)
 	 @ApiResponses(value = {
@@ -49,13 +48,23 @@ public class EstoqueController {
 		 if(mapaEstoque.containsKey(idProduto)) {
 			 Integer quantidadeAtual = mapaEstoque.get(idProduto);
 			 Integer novaQuantidade = quantidadeAtual - quantidade;
-			 mapaEstoque.put(idProduto, novaQuantidade);
+			 mapaEstoque.put(idProduto, novaQuantidade < 0 ? quantidadeAtual : novaQuantidade);
 		 }else {
 			 mapaEstoque.put(idProduto, quantidade);
 		 }
 		 return  new ResponseEntity<>(true,HttpStatus.OK);	 
 		 
 	  }
+	 
+	 private boolean processaVerificarEstoque(Float  idProduto,Integer quantidade) {		 		 
+		 boolean retorno = false;
+		 if(quantidade != 0) {
+			 Integer quantidadeAtual = mapaEstoque.get(idProduto);
+			retorno = (quantidade - quantidadeAtual) <= 0;	  
+		 }
+		 return retorno;
+		 
+	 }
 	 
 	
 
