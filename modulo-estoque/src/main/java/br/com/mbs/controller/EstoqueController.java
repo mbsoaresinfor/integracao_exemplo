@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.mbs.entidades.Produto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -21,7 +20,7 @@ public class EstoqueController {
 	private Map<Float,Integer> mapaEstoque = new HashMap();// chaveProduto,quantidade
 	 
 	 
-	 @ApiOperation(value = "Verifica se existe um produto no estoque",response=Produto.class)
+	 @ApiOperation(value = "Verifica se existe um produto no estoque")
 	 @ApiResponses(value = {
 			    @ApiResponse(code = 200, message = "Sucesso na verificacao do estoque"),
 			    @ApiResponse(code = 204, message = "Produto nao encontrado"),
@@ -38,7 +37,7 @@ public class EstoqueController {
 	  }
 	 	 
 	 
-	 @ApiOperation(value = "Atualiza um produto no estoque",response=Produto.class)
+	 @ApiOperation(value = "Atualiza um produto no estoque")
 	 @ApiResponses(value = {
 			    @ApiResponse(code = 200, message = "Sucesso na atualizacao do estoque")			    
 			})
