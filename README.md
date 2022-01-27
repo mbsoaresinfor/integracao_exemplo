@@ -5,3 +5,12 @@ A integração é demonstrada, usando-se duas formas:
 1) Aplicação B integra com Sistema B, usando BPM (Camunda).
 
 O modulo-produto, realiza a integração junto ao modulo-estoque.
+
+Para acesso ao modulo-produto
+http://localhost:9090/swagger-ui.html#/
+
+Para acesso ao modulo-estoque
+http://localhost:9091/swagger-ui.html#/
+
+
+
