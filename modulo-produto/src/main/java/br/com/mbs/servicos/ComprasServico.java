@@ -19,4 +19,9 @@ public class ComprasServico {
 	public List<Compras> getLista(){
 		return listaCompras;
 	}
+
+	public void executaLoteComprasAcima10() {
+		// implementar.
+		
+	}
 }

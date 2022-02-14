@@ -76,6 +76,15 @@
     <version>2.2.10.RELEASE</version>
 </dependency>
 
+	  <dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-batch</artifactId>
+			</dependency>     
+	<dependency>
+		<groupId>com.sun.mail</groupId>
+		<artifactId>javax.mail</artifactId>
+		<version>1.6.2</version>
+	</dependency>
 	
   </dependencies>
 
